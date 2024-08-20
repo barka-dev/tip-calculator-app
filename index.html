@@ -14,7 +14,7 @@
 <body>
   <main>
     <header>
-      <h1>SPLI<br>TTER</h1>
+      <img src="./images/logo.svg" alt="splitterlogo">
     </header>
     <article>
       <section>
@@ -32,8 +32,10 @@
           </div>
           <div class="hiddenInput">
             <label for="cstmtip">Custom Tip %</label>
-            <input type="number" name="cstmtip" id="cstmtip">
-            <button>Set</button>
+            <div>
+              <input type="number" name="cstmtip" id="cstmtip">
+              <button>Submit</button>
+            </div>
           </div>
           <label for="nbPeople">Number of People</label>
           <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
@@ -42,17 +44,17 @@
       <section>
         <section>
           <div>
-            <h2>Tip Amount</h2>
+            <h1>Tip Amount</h1>
             <p>/ person</p>
           </div>
-          <h3>4.27</h3>
+          <h2>4.27</h2>
         </section>
         <section>
           <div>
-            <h2>Total</h2>
+            <h1>Total</h1>
             <p>/ person</p>
           </div>
-          <h3>32.79</h3>
+          <h2>32.79</h2>
         </section>
         <button>Reset</button>
       </section>
