@@ -23,12 +23,12 @@
           <input type="number" name="bill" id="bill">
           <label for="tip">Select Tip %</label>
           <div>
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>25%</button>
-            <button>50%</button>
-            <button>Custom</button>
+            <button class="tip">5%</button>
+            <button class="tip">10%</button>
+            <button class="tip btnSelected">15%</button>
+            <button class="tip">25%</button>
+            <button class="tip">50%</button>
+            <button class="tip">Custom</button>
           </div>
           <div class="hiddenInput">
             <label for="cstmtip">Custom Tip %</label>
@@ -38,7 +38,7 @@
             </div>
           </div>
           <label for="nbPeople">Number of People</label>
-          <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+          <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople">
         </form>
       </section>
       <section>
