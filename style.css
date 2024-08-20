@@ -38,6 +38,7 @@ article{
 
 input{
     width:100%;
+    margin-block-start:6px;
 }
 label{
     font-size:1rem;
@@ -63,19 +64,17 @@ input{
     font-size:1.5rem;
     color:var(--very-dark-cyan);
     text-align:right;
+    background-repeat:no-repeat;
+    background-position:1.2rem center;
+    padding-left:3rem;
 }
-input[id="bill"]{
-    position:relative;
-}
-input[id="bill"]::before{
-    content:url('./images/icon-dollar.svg');
-    position:absolute;
-    left:0;
-    top:50%;
-    transform: translateY(-50%);
-    height:1rem;
-    width:1rem;
 
+input[id="bill"]{
+    background-image:url('./images/icon-dollar.svg');  
+}
+
+input[id="nbPeople"]{
+    background-image:url('./images/icon-person.svg');  
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -86,4 +85,38 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+form > div:first-of-type{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap:1.03rem;
+    margin-block-start:1rem;
+}
+
+form > div:first-of-type button{
+    grid-column:span 6;
+    border-radius:5px;
+    border:none;
+    font-size:1.5rem;
+    padding-block:0.375rem;
+}
+
+form > div:first-of-type button:not(:last-of-type){
+    background-color:var(--very-dark-cyan);
+    color:var(--white);
+}
+
+form > div:first-of-type button:last-of-type{
+    background-color:var(--very-light-grayish-cyan);
+    color:var(--dark-grayish-cyan);
+}
+
+.btnSelected{
+    background-color:var(--strong-cyan) !important;
+    color:var(--very-dark-cyan) !important;
+}
+
+.hiddenInput{
+    display:none;
 }
