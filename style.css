@@ -3,7 +3,7 @@
 :root{
     /* Colors */
     --strong-cyan: hsl(172, 67%, 45%);
-    --very dark cyan: hsl(183, 100%, 15%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
     --dark-grayish-cyan: hsl(186, 14%, 43%);
     --grayish-cyan: hsl(184, 14%, 56%);
     --light-grayish-cyan: hsl(185, 41%, 84%);
@@ -16,20 +16,74 @@
     box-sizing:border-box;
     padding:0;
     margin:0;
+    font-family:"Space Mono", monospace;
+    font-weight:700;
 }
 
 body{
     background-color:var(--light-grayish-cyan);
 }
 
-/* Hide arrows for Chrome, Safari, Edge, Opera */
-.no-arrows::-webkit-outer-spin-button,
-.no-arrows::-webkit-inner-spin-button {
+header{
+    padding-block-start:3.125rem;
+    padding-block-end:2.55rem;
+    padding-inline:9.02rem;
+}
+
+article{
+    background-color:var(--white);
+    border-radius:1.56rem 1.56rem 0;
+    padding:2rem;
+}
+
+input{
+    width:100%;
+}
+label{
+    font-size:1rem;
+    color:var(--dark-grayish-cyan);
+    display:block; 
+}
+
+label:not(:first-of-type), .hiddenInput{
+    margin-block-start:2rem;
+}
+
+.hiddenInput div{
+    display:flex;
+    gap:.5rem
+}
+
+input{
+    border-radius:5px;
+    background-color:var(--very-light-grayish-cyan);
+    border:none;
+    padding-inline:1.09rem;
+    padding-block:0.375rem;
+    font-size:1.5rem;
+    color:var(--very-dark-cyan);
+    text-align:right;
+}
+input[id="bill"]{
+    position:relative;
+}
+input[id="bill"]::before{
+    content:url('./images/icon-dollar.svg');
+    position:absolute;
+    left:0;
+    top:50%;
+    transform: translateY(-50%);
+    height:1rem;
+    width:1rem;
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* Hide arrows for Firefox */
-.no-arrows {
+input[type="number"] {
     -moz-appearance: textfield;
 }
