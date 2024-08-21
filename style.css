@@ -39,10 +39,7 @@ article{
     gap:2rem;
 }
 
-input{
-    width:100%;
-    margin-block-start:6px;
-}
+
 label{
     font-size:1rem;
     color:var(--dark-grayish-cyan);
@@ -59,13 +56,15 @@ label:not(:first-of-type), .customInput{
 }
 
 input{
+    width:100%;
+    margin-block-start:6px;
     border-radius:5px;
     background-color:var(--very-light-grayish-cyan);
     border:none;
     padding-inline:1.09rem;
     padding-block:0.375rem;
     font-size:1.5rem;
-    color:var(--very-dark-cyan);
+    color:#00474B;
     text-align:right;
     background-repeat:no-repeat;
     background-position:1.2rem center;
@@ -112,7 +111,7 @@ form > div:first-of-type button:not(:last-of-type){
 
 form > div:first-of-type button:last-of-type{
     background-color:var(--very-light-grayish-cyan);
-    color:var(--dark-grayish-cyan);
+    color:#547878;
 }
 
 .btnSelected{
@@ -178,7 +177,7 @@ article > section:last-of-type button{
 }
 
 
-@media screen and (min-width:1440px){
+@media screen and (min-width:60rem){
     main{
         height:100vh;
         display:flex;
