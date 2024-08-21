@@ -1,4 +1,5 @@
 const tips = document.querySelectorAll(".tip");
+const cutomTip = document.querySelector(".cutomTip");
 
 
 const removeSelectionStyle = (items)=>{
@@ -8,12 +9,16 @@ const removeSelectionStyle = (items)=>{
 }
 
 const handleStyleOnClick = (item, func, items)=>{
-    item.addEventListener('click', (e)=>{
+    item.addEventListener('click', ()=>{
         func(items);
-        e.target.classList.add('btnSelected');
+        item.classList.add('btnSelected');
     })
 }
 
 tips.forEach((tip)=>{
     handleStyleOnClick(tip, removeSelectionStyle, tips);
 });
+
+cutomTip.addEventListener('focus',()=>{
+    removeSelectionStyle(tips);
+})
