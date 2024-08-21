@@ -49,11 +49,11 @@ label{
     display:block; 
 }
 
-label:not(:first-of-type), .hiddenInput{
+label:not(:first-of-type), .customInput{
     margin-block-start:2rem;
 }
 
-.hiddenInput div{
+.customInput div{
     display:flex;
     gap:.5rem
 }
@@ -120,8 +120,19 @@ form > div:first-of-type button:last-of-type{
     color:var(--very-dark-cyan) !important;
 }
 
-.hiddenInput{
+.hidden{
     display:none;
+}
+
+.customInput button{
+    background-color:var(--strong-cyan);
+    color:var(--very-dark-cyan);
+    border-radius:5px;
+    border:none;
+    padding-inline:1.5rem;
+    font-size:1rem;
+    text-transform:uppercase;
+    letter-spacing:0.2rem;
 }
 
 article > section:last-of-type{
