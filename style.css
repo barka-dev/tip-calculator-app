@@ -200,7 +200,7 @@ button, form>div>label{
 }
 
 input[type='checkbox']{
-    display:none;
+    /* display:none; */
 }
 
 @media screen and (min-width:60rem){
