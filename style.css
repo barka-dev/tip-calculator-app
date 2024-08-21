@@ -27,12 +27,12 @@ body{
 header{
     padding-block-start:3.125rem;
     padding-block-end:2.55rem;
-    padding-inline:9.02rem;
+    text-align:center;
 }
 
 article{
     background-color:var(--white);
-    border-radius:1.56rem 1.56rem 0;
+    border-radius:1.56rem 1.56rem 0 0;
     padding:2rem;
     display:flex;
     flex-direction:column;
@@ -136,6 +136,9 @@ form > div:first-of-type button:last-of-type{
 }
 
 article > section:last-of-type{
+    display:flex;
+    flex-direction:column;
+    gap:1.25rem;
     background-color:var(--very-dark-cyan);
     border-radius:15px;
     padding:2.31rem 1.5rem 1.5rem;
@@ -145,10 +148,6 @@ article > section:last-of-type section{
     display:flex;
     justify-content:space-between;
     align-items:center;
-}
-
-article > section:last-of-type section:last-of-type{
-    margin-block-start:1.25rem;
 }
 
 h1{
@@ -175,5 +174,61 @@ article > section:last-of-type button{
     padding:0.56rem 2rem;
     font-size:1.25rem;
     text-transform:uppercase;
-    margin-block-start:2rem;
+    margin-block-start:auto;
+}
+
+
+@media screen and (min-width:1440px){
+    main{
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    article{
+        border-radius:1.56rem;
+        flex-direction:row;
+        gap:3rem;
+        width:57.5rem;
+    }
+    article>*{
+        flex:1;
+    }
+
+    article>section:first-of-type{
+        padding-block-start:0.81rem;
+        padding-inline-start:1rem;
+        padding-block-end:1rem;
+    }
+    
+    label:not(:first-of-type), .customInput{
+        margin-block-start:2.5rem;
+    }
+    
+    .customInput div{
+        display:flex;
+        gap:.5rem
+    }
+    
+    form > div:first-of-type{
+        gap:0.875rem;
+    }
+    
+    form > div:first-of-type button{
+        grid-column:span 4;
+    }
+    
+    article > section:last-of-type{
+        padding:2.5rem;
+        gap:1.56rem;
+    }
+    
+    h2{
+        font-size:3rem;
+    }
+    
+    article > section:last-of-type button{
+        padding:0.56rem 2.5rem;
+    }
 }
