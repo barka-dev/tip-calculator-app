@@ -72,13 +72,7 @@ form>input::placeholder{
 }
 
 input:focus{
-    border:2px solid #26C2AE;
-    outline:none;
-}
-
-form>div>input:focus{
-    border:2px solid #26C2AE;
-    outline:none;
+    outline:2px solid #26C2AE;
 }
 
 input[id="bill"]{
@@ -182,8 +176,9 @@ article > section:last-of-type button{
     margin-block-start:auto;
 }
 
-article > section:last-of-type button:hover{
-    background-color:#9FE8DF;
+button:hover{
+    background-color:#9FE8DF!important;
+    color:var(--very-dark-cyan)!important;
 }
 
 button{
@@ -200,7 +195,7 @@ button{
 }
 
 .errorStyle{
-    border:2px solid #E17052 !important;
+    outline:2px solid #E17052 !important;
 }
 
 @media screen and (min-width:60rem){
