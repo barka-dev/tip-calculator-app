@@ -20,25 +20,21 @@
       <section>
         <form action="#" novalidate>
           <label for="bill">Bill</label>
-          <input type="number" name="bill" id="bill">
+          <input type="number" name="bill" id="bill" placeholder="0">
           <label for="tip">Select Tip %</label>
           <div>
             <button class="tip">5%</button>
             <button class="tip">10%</button>
-            <button class="tip btnSelected">15%</button>
+            <button class="tip">15%</button>
             <button class="tip">25%</button>
             <button class="tip">50%</button>
-            <button class="tip customBtn">Custom</button>
+            <input type="number" name="customTip" class="" placeholder="Custom"/>
           </div>
-          <div class="customInput hidden">
-            <label for="cstmtip">Custom Tip %</label>
-            <div>
-              <input type="number" name="cstmtip" id="cstmtip">
-              <button>Submit</button>
-            </div>
+          <div>
+            <label for="nbPeople">Number of People</label>
+            <span class="hidden">Can't be zero</span>
           </div>
-          <label for="nbPeople">Number of People</label>
-          <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople">
+          <input type="number" class="" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople" placeholder="0">
         </form>
       </section>
       <section>
@@ -47,14 +43,14 @@
             <h1>Tip Amount</h1>
             <p>/ person</p>
           </div>
-          <h2>$4.27</h2>
+          <h2>$0.00</h2>
         </section>
         <section>
           <div>
             <h1>Total</h1>
             <p>/ person</p>
           </div>
-          <h2>$32.79</h2>
+          <h2>$0.00</h2>
         </section>
         <button>Reset</button>
       </section>
