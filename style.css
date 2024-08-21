@@ -40,13 +40,13 @@ article{
 }
 
 
-label{
+form>label{
     font-size:1rem;
     color:var(--dark-grayish-cyan);
     display:block; 
 }
 
-label:not(:first-of-type),form>div:last-of-type{
+form>label:not(:first-of-type),form>div:last-of-type{
     margin-block-start:2rem;
 }
 
@@ -71,7 +71,7 @@ form>input::placeholder{
     opacity:.35;
 }
 
-input:focus{
+input[type='number']:focus{
     outline:2px solid #26C2AE;
 }
 
@@ -108,19 +108,20 @@ form > div:first-of-type *{
     padding-block:0.375rem;
 }
 
-form > div:first-of-type button{
+form > div:first-of-type label{
     background-color:var(--very-dark-cyan);
     color:var(--white);
+    text-align:center;
 }
 
-form > div:first-of-type input{
+form > div:first-of-type input[type='number']{
     background-color:var(--very-light-grayish-cyan);
     color:#00474B;
     text-align:right;
     padding-inline:.5rem;
 }
 
-form > div:first-of-type input::placeholder{
+form > div:first-of-type input[type='number']::placeholder{
     text-align:center;
     color:#547878;
 }
@@ -176,12 +177,12 @@ article > section:last-of-type button{
     margin-block-start:auto;
 }
 
-button:hover{
+button:hover, form>div>label:hover{
     background-color:#9FE8DF!important;
     color:var(--very-dark-cyan)!important;
 }
 
-button{
+button, form>div>label{
     cursor:pointer;
 }
 
@@ -196,6 +197,10 @@ button{
 
 .errorStyle{
     outline:2px solid #E17052 !important;
+}
+
+input[type='checkbox']{
+    display:none;
 }
 
 @media screen and (min-width:60rem){
@@ -222,7 +227,7 @@ button{
         padding-block-end:1rem;
     }
     
-    label:not(:first-of-type), form>div:last-of-type{
+    form>label:not(:first-of-type), form>div:last-of-type{
         margin-block-start:2.5rem;
     }
     
