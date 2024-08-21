@@ -46,16 +46,11 @@ label{
     display:block; 
 }
 
-label:not(:first-of-type), .customInput{
+label:not(:first-of-type),form>div:last-of-type{
     margin-block-start:2rem;
 }
 
-.customInput div{
-    display:flex;
-    gap:.5rem
-}
-
-input{
+form>input{
     width:100%;
     margin-block-start:6px;
     border-radius:5px;
@@ -69,6 +64,21 @@ input{
     background-repeat:no-repeat;
     background-position:1.2rem center;
     padding-left:3rem;
+}
+
+form>input::placeholder{
+    color:#00474B;
+    opacity:.35;
+}
+
+input:focus{
+    border:2px solid #26C2AE;
+    outline:none;
+}
+
+form>div>input:focus{
+    border:2px solid #26C2AE;
+    outline:none;
 }
 
 input[id="bill"]{
@@ -96,7 +106,7 @@ form > div:first-of-type{
     margin-block-start:1rem;
 }
 
-form > div:first-of-type button{
+form > div:first-of-type *{
     grid-column:span 6;
     border-radius:5px;
     border:none;
@@ -104,34 +114,30 @@ form > div:first-of-type button{
     padding-block:0.375rem;
 }
 
-form > div:first-of-type button:not(:last-of-type){
+form > div:first-of-type button{
     background-color:var(--very-dark-cyan);
     color:var(--white);
 }
 
-form > div:first-of-type button:last-of-type{
+form > div:first-of-type input{
     background-color:var(--very-light-grayish-cyan);
+    color:#00474B;
+    text-align:right;
+    padding-inline:.5rem;
+}
+
+form > div:first-of-type input::placeholder{
+    text-align:center;
     color:#547878;
 }
 
-.btnSelected{
-    background-color:var(--strong-cyan) !important;
-    color:var(--very-dark-cyan) !important;
+form > div:last-of-type{
+    display:flex;
+    justify-content:space-between;
 }
 
-.hidden{
-    display:none;
-}
-
-.customInput button{
-    background-color:var(--strong-cyan);
-    color:var(--very-dark-cyan);
-    border-radius:5px;
-    border:none;
-    padding-inline:1.5rem;
-    font-size:1rem;
-    text-transform:uppercase;
-    letter-spacing:0.2rem;
+span{
+    color:#E17457;
 }
 
 article > section:last-of-type{
@@ -166,7 +172,7 @@ h2{
 
 article > section:last-of-type button{
     width:100%;
-    background-color:var(--strong-cyan);
+    background-color:#0D686D;
     color:var(--very-dark-cyan);
     border-radius:5px;
     border:none;
@@ -176,6 +182,26 @@ article > section:last-of-type button{
     margin-block-start:auto;
 }
 
+article > section:last-of-type button:hover{
+    background-color:#9FE8DF;
+}
+
+button{
+    cursor:pointer;
+}
+
+.btnSelected{
+    background-color:var(--strong-cyan) !important;
+    color:var(--very-dark-cyan) !important;
+}
+
+.hidden{
+    display:none;
+}
+
+.errorStyle{
+    border:2px solid #E17052 !important;
+}
 
 @media screen and (min-width:60rem){
     main{
@@ -201,20 +227,15 @@ article > section:last-of-type button{
         padding-block-end:1rem;
     }
     
-    label:not(:first-of-type), .customInput{
+    label:not(:first-of-type), form>div:last-of-type{
         margin-block-start:2.5rem;
-    }
-    
-    .customInput div{
-        display:flex;
-        gap:.5rem
     }
     
     form > div:first-of-type{
         gap:0.875rem;
     }
     
-    form > div:first-of-type button{
+    form > div:first-of-type *{
         grid-column:span 4;
     }
     
