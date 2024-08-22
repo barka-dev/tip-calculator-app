@@ -167,7 +167,7 @@ h2{
 
 article > section:last-of-type button{
     width:100%;
-    background-color:#0D686D;
+    background-color:var(--strong-cyan);
     color:var(--very-dark-cyan);
     border-radius:5px;
     border:none;
@@ -177,13 +177,17 @@ article > section:last-of-type button{
     margin-block-start:auto;
 }
 
-button:hover, form>div>label:hover{
+button:not(:disabled):hover, form>div>label:hover{
     background-color:#9FE8DF!important;
     color:var(--very-dark-cyan)!important;
 }
 
 button, form>div>label{
     cursor:pointer;
+}
+
+#submitBtn:disabled{
+    background-color:#0D686D;
 }
 
 .btnSelected{
