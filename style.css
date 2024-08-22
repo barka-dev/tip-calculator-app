@@ -112,6 +112,7 @@ form > div:first-of-type label{
     background-color:var(--very-dark-cyan);
     color:var(--white);
     text-align:center;
+    cursor:pointer;
 }
 
 form > div:first-of-type input[type='number']{
@@ -165,7 +166,7 @@ h2{
     color:var(--strong-cyan);
 }
 
-article > section:last-of-type button{
+button{
     width:100%;
     background-color:var(--strong-cyan);
     color:var(--very-dark-cyan);
@@ -175,15 +176,12 @@ article > section:last-of-type button{
     font-size:1.25rem;
     text-transform:uppercase;
     margin-block-start:auto;
+    cursor:pointer;
 }
 
 button:not(:disabled):hover, form>div>label:hover{
-    background-color:#9FE8DF!important;
-    color:var(--very-dark-cyan)!important;
-}
-
-button, form>div>label{
-    cursor:pointer;
+    background-color:#9FE8DF;
+    color:var(--very-dark-cyan);
 }
 
 #submitBtn:disabled{
