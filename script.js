@@ -5,6 +5,10 @@ const form = document.querySelector("#form");
 const radios = document.querySelectorAll("input[type='radio']");
 const tipAmount = document.querySelector('#tipAmount');
 const total = document.querySelector('#total');
+const inputs = document.querySelectorAll(".inputs");
+const bill = document.querySelector("#bill");
+const nbPeople = document.querySelector("#nbPeople");
+// const isChecked = document.querySelector("input[type='radio']:checked");
 
 const removeSelection = (items)=>{
     items.forEach((item)=>{
@@ -48,10 +52,21 @@ const handleFormData = ()=>{
     formData.forEach((value, key)=>{
         console.log(key + ": " + value);
     })
-    // form.submit();
     return false;
 }
 
 submitBtn.addEventListener('click',()=>{
     handleFormData();
+});
+
+
+inputs.forEach((input) => {
+    input.addEventListener('blur', () => {
+        const isChecked = document.querySelector("input[type='radio']:checked");
+        if (nbPeople.value !== '' && (isChecked || cutomTip.value !== '') && bill.value !== '' ) {
+            console.log("OK");
+        } else {
+            console.log("Missing or invalid input.");
+        }
+    });
 });
