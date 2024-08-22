@@ -20,21 +20,21 @@
       <section>
         <form id="form" novalidate>
           <label for="bill">Bill</label>
-          <input type="number" name="bill" id="bill" placeholder="0">
+          <input type="number" class="inputs" name="bill" id="bill" placeholder="0"/>
           <label for="tip">Select Tip %</label>
           <div>
-            <label class="tip"><input type="radio" name="tip" value="5"/>5%</label>
-            <label class="tip"><input type="radio" name="tip" value="10"/>10%</label>
-            <label class="tip"><input type="radio" name="tip" value="15"/>15%</label>
-            <label class="tip"><input type="radio" name="tip" value="25"/>25%</label>
-            <label class="tip"><input type="radio" name="tip" value="50"/>50%</label>
-            <input type="number" name="cutomTip" class="cutomTip" placeholder="Custom"/>
+            <label class="tip"><input type="radio" name="tip" class="inputs" value="5"/>5%</label>
+            <label class="tip"><input type="radio" name="tip" class="inputs" value="10"/>10%</label>
+            <label class="tip"><input type="radio" name="tip" class="inputs" value="15"/>15%</label>
+            <label class="tip"><input type="radio" name="tip" class="inputs" value="25"/>25%</label>
+            <label class="tip"><input type="radio" name="tip" class="inputs" value="50"/>50%</label>
+            <input type="number" name="cutomTip" class="inputs cutomTip" placeholder="Custom"/>
           </div>
           <div>
             <label for="nbPeople">Number of People</label>
             <span class="hidden">Can't be zero</span>
           </div>
-          <input type="number"  class="" name="nbPeople" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople" placeholder="0">
+          <input type="number"  class="inputs" name="nbPeople" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople" placeholder="0"/>
         </form>
       </section>
       <section>
