@@ -28,7 +28,7 @@
             <label class="tip"><input type="radio" name="tip" value="15"/>15%</label>
             <label class="tip"><input type="radio" name="tip" value="25"/>25%</label>
             <label class="tip"><input type="radio" name="tip" value="50"/>50%</label>
-            <input type="number" name="tip" class="cutomTip" placeholder="Custom"/>
+            <input type="number" name="cutomTip" class="cutomTip" placeholder="Custom"/>
           </div>
           <div>
             <label for="nbPeople">Number of People</label>
@@ -43,16 +43,16 @@
             <h1>Tip Amount</h1>
             <p>/ person</p>
           </div>
-          <h2>$0.00</h2>
+          <h2 id="tipAmount">$0.00</h2>
         </section>
         <section>
           <div>
             <h1>Total</h1>
             <p>/ person</p>
           </div>
-          <h2>$0.00</h2>
+          <h2 id="total">$0.00</h2>
         </section>
-        <button id="submitBtn">Reset</button>
+        <button id="submitBtn" disabled>Reset</button>
       </section>
     </article>
   </main>
