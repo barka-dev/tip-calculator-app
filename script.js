@@ -45,8 +45,8 @@ customTip.addEventListener('focus',()=>{
 // -------------------------------------------------------------------------------------------
 
 
-// Enable or disable the submit button based on whether the inputs are filled or empty
-const enableDisableSubmit = ()=>{
+// Check data entered and enable/disable the submit button based on whether the inputs are correctly filled or empty
+const checkData = ()=>{
     const isChecked = document.querySelector("input[type='radio']:checked");
     const nbPeopleValue = parseInt(nbPeople.value);
     if (bill.value !== '' && (isChecked || customTip.value !== '') && nbPeopleValue > 0) {
@@ -65,36 +65,38 @@ const enableDisableSubmit = ()=>{
 }
 
 inputs.forEach((input) => {
-    input.addEventListener('focus', enableDisableSubmit);
-    input.addEventListener('input', enableDisableSubmit);
+    input.addEventListener('focus', checkData);
+    input.addEventListener('input', checkData);
 });
 // -------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------
 
 
 // Handle Data
+const calculateTipAmount = (bill, tip, nbPeople)=>{
+    return (bill*(tip/100))/nbPeople;
+}
 
-const checkData = (bill, tip, customTip, nbPeople)=>{
-    const _bill = parseFloat(bill);
-    const _tip = parseFloat(tip);
-    const _customTip = parseFloat(customTip);
-    const _nbPeople = parseInt(nbPeople);
-    const _finalTip = 0;
-
-    if(_bill > 0 && _nbPeople > 0){
-        if(_tip !== undefined){
-            _finalTip = _tip;
-        }else if(_customTip !== ''){
-            _finalTip = _customTip;
-        }
-    }
-
+const calculateTotal = (bill, nbPeople, tipAmount)=>{
+    return bill/nbPeople+tipAmount;
 }
 
 const handleFormData = ()=>{
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    console.log(typeof(data.tip));
+    const billValue = parseFloat(data.bill);
+    const nbPeopleValue = parseInt(data.nbPeople);
+    let finalTip = 0;
+    if(data.customTip !== ''){
+        finalTip = parseFloat(data.customTip);
+    }else{
+        finalTip = parseFloat(data.tip);
+    }
+
+    const tipAmountResult = calculateTipAmount(billValue, finalTip, nbPeopleValue);
+    const totalResult = calculateTotal(billValue, nbPeopleValue, tipAmountResult);
+    tipAmount.textContent = `$${parseFloat(tipAmountResult.toFixed(2))}`;
+    total.textContent = `$${parseFloat(totalResult.toFixed(2))}`;
   
 }
 
