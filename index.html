@@ -32,7 +32,7 @@
           </div>
           <div>
             <label for="nbPeople">Number of People</label>
-            <span class="hidden">Can't be zero</span>
+            <span id="errorText" class="hidden">Can't be zero</span>
           </div>
           <input type="number"  class="inputs" name="nbPeople" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople" placeholder="0"/>
         </form>
