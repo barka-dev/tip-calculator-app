@@ -1,5 +1,5 @@
 const tips = document.querySelectorAll(".tip");
-const cutomTip = document.querySelector(".cutomTip");
+const customTip = document.querySelector(".customTip");
 const submitBtn = document.querySelector("#submitBtn");
 const form = document.querySelector("#form");
 const radios = document.querySelectorAll("input[type='radio']");
@@ -8,7 +8,6 @@ const total = document.querySelector('#total');
 const inputs = document.querySelectorAll(".inputs");
 const bill = document.querySelector("#bill");
 const nbPeople = document.querySelector("#nbPeople");
-// const isChecked = document.querySelector("input[type='radio']:checked");
 
 const removeSelection = (items)=>{
     items.forEach((item)=>{
@@ -25,7 +24,7 @@ const removeSelectionStyle = (items)=>{
 
 const handleStyleOnClick = (item, func, items)=>{
     item.addEventListener('click', ()=>{
-        cutomTip.value = '';
+        customTip.value = '';
         func(items);
         item.classList.add('btnSelected');
     })
@@ -35,14 +34,7 @@ tips.forEach((tip)=>{
     handleStyleOnClick(tip, removeSelectionStyle, tips);
 });
 
-// tips.forEach((tip)=>{
-//     tip.addEventListener('click', ()=>{
-//         removeSelectionStyle(tips);
-//         tip.classList.add('btnSelected');
-//     })
-// });
-
-cutomTip.addEventListener('focus',()=>{
+customTip.addEventListener('focus',()=>{
     removeSelectionStyle(tips);
     removeSelection(radios);
 });
@@ -59,14 +51,22 @@ submitBtn.addEventListener('click',()=>{
     handleFormData();
 });
 
+// Enable or disable the submit button based on whether the inputs are filled or empty
+
+const enableDisableSubmit = ()=>{
+    const isChecked = document.querySelector("input[type='radio']:checked");
+    if (bill.value !== '' && (isChecked || customTip.value !== '') && nbPeople.value !== '') {
+        submitBtn.disabled = false;
+        console.log("OK");
+    } else {
+        submitBtn.disabled = true;
+    }
+}
 
 inputs.forEach((input) => {
-    input.addEventListener('blur', () => {
-        const isChecked = document.querySelector("input[type='radio']:checked");
-        if (nbPeople.value !== '' && (isChecked || cutomTip.value !== '') && bill.value !== '' ) {
-            console.log("OK");
-        } else {
-            console.log("Missing or invalid input.");
-        }
-    });
+    input.addEventListener('focus', enableDisableSubmit);
+    input.addEventListener('input', enableDisableSubmit);
 });
+
+// -------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------
