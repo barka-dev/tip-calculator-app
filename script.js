@@ -8,7 +8,10 @@ const total = document.querySelector('#total');
 const inputs = document.querySelectorAll(".inputs");
 const bill = document.querySelector("#bill");
 const nbPeople = document.querySelector("#nbPeople");
+const errorText = document.querySelector("#errorText");
 
+
+// Handle inputs style on selection
 const removeSelection = (items)=>{
     items.forEach((item)=>{
         item.checked = false;
@@ -38,28 +41,26 @@ customTip.addEventListener('focus',()=>{
     removeSelectionStyle(tips);
     removeSelection(radios);
 });
+// -------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------
 
-const handleFormData = ()=>{
-    const formData = new FormData(form);
-    formData.forEach((value, key)=>{
-        console.log(key + ": " + value);
-    })
-    return false;
-}
-
-submitBtn.addEventListener('click',()=>{
-    handleFormData();
-});
 
 // Enable or disable the submit button based on whether the inputs are filled or empty
-
 const enableDisableSubmit = ()=>{
     const isChecked = document.querySelector("input[type='radio']:checked");
-    if (bill.value !== '' && (isChecked || customTip.value !== '') && nbPeople.value !== '') {
+    const nbPeopleValue = parseInt(nbPeople.value);
+    if (bill.value !== '' && (isChecked || customTip.value !== '') && nbPeopleValue > 0) {
         submitBtn.disabled = false;
-        console.log("OK");
+        errorText.classList.add('hidden');
+        nbPeople.classList.remove('errorStyle');
+    } else if(nbPeopleValue <= 0){
+        submitBtn.disabled = true;
+        errorText.classList.remove('hidden');
+        nbPeople.classList.add('errorStyle');
     } else {
         submitBtn.disabled = true;
+        errorText.classList.add('hidden');
+        nbPeople.classList.remove('errorStyle');
     }
 }
 
@@ -67,6 +68,36 @@ inputs.forEach((input) => {
     input.addEventListener('focus', enableDisableSubmit);
     input.addEventListener('input', enableDisableSubmit);
 });
+// -------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------
 
-// -------------------------------------------------------------------------------------------
-// -------------------------------------------------------------------------------------------
+
+// Handle Data
+
+const checkData = (bill, tip, customTip, nbPeople)=>{
+    const _bill = parseFloat(bill);
+    const _tip = parseFloat(tip);
+    const _customTip = parseFloat(customTip);
+    const _nbPeople = parseInt(nbPeople);
+    const _finalTip = 0;
+
+    if(_bill > 0 && _nbPeople > 0){
+        if(_tip !== undefined){
+            _finalTip = _tip;
+        }else if(_customTip !== ''){
+            _finalTip = _customTip;
+        }
+    }
+
+}
+
+const handleFormData = ()=>{
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    console.log(typeof(data.tip));
+  
+}
+
+submitBtn.addEventListener('click',()=>{
+    handleFormData();
+});
