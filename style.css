@@ -201,8 +201,8 @@ button:not(:disabled):hover, form>div>label:hover{
     outline:2px solid #E17052 !important;
 }
 
-input[type='checkbox']{
-    /* display:none; */
+input[type='radio']{
+    display:none;
 }
 
 @media screen and (min-width:60rem){
