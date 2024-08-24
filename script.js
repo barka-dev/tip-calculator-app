@@ -2,6 +2,7 @@ const tips = document.querySelectorAll(".tip");
 const customTip = document.querySelector(".customTip");
 const submitBtn = document.querySelector("#submitBtn");
 const radios = document.querySelectorAll("input[type='radio']");
+const numberInputs = document.querySelectorAll("input[type='number']");
 const tipAmount = document.querySelector('#tipAmount');
 const total = document.querySelector('#total');
 const inputs = document.querySelectorAll(".inputs");
@@ -40,35 +41,19 @@ customTip.addEventListener('focus',()=>{
     removeSelectionStyle(tips);
     removeSelection(radios);
 });
-// -------------------------------------------------------------------------------------------
-// -------------------------------------------------------------------------------------------
 
 
-// Check data entered and enable/disable the submit button based on whether the inputs are correctly filled or empty
-const checkData = ()=>{
-    const isChecked = document.querySelector("input[type='radio']:checked");
+// Change number of people input style if the value entered is not valid
+const checkPeopleValue = ()=>{
     const nbPeopleValue = parseInt(nbPeople.value);
-    if (bill.value !== '' && (isChecked || customTip.value !== '') && nbPeopleValue > 0) {
-        submitBtn.disabled = false;
-        errorText.classList.add('hidden');
-        nbPeople.classList.remove('errorStyle');
-    } else if(nbPeopleValue <= 0){
-        submitBtn.disabled = true;
+    if (nbPeopleValue <= 0) {
         errorText.classList.remove('hidden');
         nbPeople.classList.add('errorStyle');
-    } else {
-        submitBtn.disabled = true;
+    } else{
         errorText.classList.add('hidden');
         nbPeople.classList.remove('errorStyle');
     }
 }
-
-inputs.forEach((input) => {
-    input.addEventListener('focus', checkData);
-    input.addEventListener('input', checkData);
-});
-// -------------------------------------------------------------------------------------------
-// -------------------------------------------------------------------------------------------
 
 
 // Handle Data
@@ -87,13 +72,13 @@ const calculateTotal = (bill, nbPeople, tipAmount)=>{
 const handleFormData = ()=>{
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    const billValue = parseFloat(data.bill);
-    const nbPeopleValue = parseInt(data.nbPeople);
-    const tipValue = parseFloat(data.tip);
-    const customTipValue = parseFloat(data.customTip);
+    const billValue = parseFloat(data.bill)>0 ? parseFloat(data.bill) : 0;
+    const nbPeopleValue = parseInt(data.nbPeople)>0 ? parseInt(data.nbPeople) : 1 ;
+    const tipValue = parseFloat(data.tip) > 0 ? parseFloat(data.tip) : 0 ;
+    const customTipValue = parseFloat(data.customTip) > 0 ? parseFloat(data.customTip) : 0;
     if (billValue>=0 && (tipValue>=0 || customTipValue>=0) && nbPeopleValue>0){
         let finalTip = 0;
-        if(customTipValue>=0){
+        if(customTipValue>0){
             finalTip = customTipValue;
         }else{
             finalTip = tipValue;
@@ -107,6 +92,32 @@ const handleFormData = ()=>{
     } 
 }
 
+const enableResetBtn = () =>{
+    const isChecked = document.querySelector("input[type='radio']:checked");
+    if (bill.value !== '' || isChecked || customTip.value !== '' || nbPeople.value !== '') {
+        submitBtn.disabled = false;
+    }else{
+        submitBtn.disabled = true;
+    }
+}
+
+inputs.forEach((input) => {
+    input.addEventListener('focus', checkPeopleValue);
+    input.addEventListener('input', checkPeopleValue);
+    input.addEventListener('focus', handleFormData);
+    input.addEventListener('input', handleFormData);
+    input.addEventListener('focus', enableResetBtn);
+    input.addEventListener('input', enableResetBtn);
+});
+
 submitBtn.addEventListener('click',()=>{
-    handleFormData();
+    removeSelectionStyle(tips);
+    removeSelection(radios);
+    tipAmount.textContent = "$0.00";
+    total.textContent = "$0.00";
+    errorText.classList.add('hidden');
+    nbPeople.classList.remove('errorStyle');
+    numberInputs.forEach((input)=>{
+        input.value = "";
+    });
 });
