@@ -17,12 +17,12 @@
       <img src="./images/logo.svg" alt="splitterlogo">
     </header>
     <article>
-      <section>
+      <section class="section_1">
         <form id="form" novalidate>
           <label for="bill">Bill</label>
           <input type="number" class="inputs" name="bill" id="bill" placeholder="0"/>
           <label for="tip">Select Tip %</label>
-          <div>
+          <div class="group_radios">
             <label class="tip"><input type="radio" name="tip" class="inputs" value="5"/>5%</label>
             <label class="tip"><input type="radio" name="tip" class="inputs" value="10"/>10%</label>
             <label class="tip"><input type="radio" name="tip" class="inputs" value="15"/>15%</label>
@@ -30,22 +30,22 @@
             <label class="tip"><input type="radio" name="tip" class="inputs" value="50"/>50%</label>
             <input type="number" name="customTip" class="inputs customTip" placeholder="Custom"/>
           </div>
-          <div>
+          <div class="group_people_error">
             <label for="nbPeople">Number of People</label>
             <span id="errorText" class="hidden">Can't be zero</span>
           </div>
           <input type="number"  class="inputs" name="nbPeople" oninput="this.value = this.value.replace(/[^0-9]/g, '');" id="nbPeople" placeholder="0"/>
         </form>
       </section>
-      <section>
-        <section>
+      <section class="section_2">
+        <section class="section_tip_amount">
           <div>
             <h1>Tip Amount</h1>
             <p>/ person</p>
           </div>
           <h2 id="tipAmount">$0.00</h2>
         </section>
-        <section>
+        <section class="section_total">
           <div>
             <h1>Total</h1>
             <p>/ person</p>
