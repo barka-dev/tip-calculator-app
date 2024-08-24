@@ -40,13 +40,13 @@ article{
 }
 
 
-form>label{
+form label:not(.group_radios label){
     font-size:1rem;
     color:var(--dark-grayish-cyan);
     display:block; 
 }
 
-form>label:not(:first-of-type),form>div:last-of-type{
+form label:not(:first-of-type):not(.group_radios label), .group_people_error{
     margin-block-start:2rem;
 }
 
@@ -93,14 +93,14 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-form > div:first-of-type{
+.group_radios{
     display:grid;
     grid-template-columns: repeat(12, 1fr);
     gap:1.03rem;
     margin-block-start:1rem;
 }
 
-form > div:first-of-type *{
+.group_radios *{
     grid-column:span 6;
     border-radius:5px;
     border:none;
@@ -108,26 +108,26 @@ form > div:first-of-type *{
     padding-block:0.375rem;
 }
 
-form > div:first-of-type label{
+.tip{
     background-color:var(--very-dark-cyan);
     color:var(--white);
     text-align:center;
     cursor:pointer;
 }
 
-form > div:first-of-type input[type='number']{
+.group_radios input[type='number']{
     background-color:var(--very-light-grayish-cyan);
     color:#00474B;
     text-align:right;
     padding-inline:.5rem;
 }
 
-form > div:first-of-type input[type='number']::placeholder{
+.group_radios input[type='number']::placeholder{
     text-align:center;
     color:#547878;
 }
 
-form > div:last-of-type{
+.group_people_error{
     display:flex;
     justify-content:space-between;
 }
@@ -136,7 +136,7 @@ span{
     color:#E17457;
 }
 
-article > section:last-of-type{
+.section_2{
     display:flex;
     flex-direction:column;
     gap:1.25rem;
@@ -145,7 +145,7 @@ article > section:last-of-type{
     padding:2.31rem 1.5rem 1.5rem;
 }
 
-article > section:last-of-type section{
+.section_tip_amount, .section_total{
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -179,7 +179,7 @@ button{
     cursor:pointer;
 }
 
-button:not(:disabled):hover, form>div>label:hover{
+button:not(:disabled):hover, .group_radios label:hover{
     background-color:#9FE8DF;
     color:var(--very-dark-cyan);
 }
@@ -188,9 +188,9 @@ button:not(:disabled):hover, form>div>label:hover{
     background-color:#0D686D;
 }
 
-.btnSelected{
-    background-color:var(--strong-cyan) !important;
-    color:var(--very-dark-cyan) !important;
+.tipSelected{
+    background-color:var(--strong-cyan) ;
+    color:var(--very-dark-cyan) ;
 }
 
 .hidden{
@@ -206,6 +206,11 @@ input[type='radio']{
 }
 
 @media screen and (min-width:60rem){
+    header{
+        padding-block-start:0;
+        padding-block-end:5.49rem;
+    }
+
     main{
         height:100vh;
         display:flex;
@@ -213,35 +218,36 @@ input[type='radio']{
         justify-content:center;
         align-items:center;
     }
+    
     article{
         border-radius:1.56rem;
         flex-direction:row;
         gap:3rem;
         width:57.5rem;
     }
-    article>*{
+    .section_1, .section_2{
         flex:1;
     }
 
-    article>section:first-of-type{
+    .section_1{
         padding-block-start:0.81rem;
         padding-inline-start:1rem;
         padding-block-end:1rem;
     }
     
-    form>label:not(:first-of-type), form>div:last-of-type{
+    form label:not(:first-of-type):not(.group_radios label), .group_people_error{
         margin-block-start:2.5rem;
     }
     
-    form > div:first-of-type{
+    .group_radios{
         gap:0.875rem;
     }
     
-    form > div:first-of-type *{
+    .group_radios *{
         grid-column:span 4;
     }
     
-    article > section:last-of-type{
+    .section_2{
         padding:2.5rem;
         gap:1.56rem;
     }
@@ -250,7 +256,7 @@ input[type='radio']{
         font-size:3rem;
     }
     
-    article > section:last-of-type button{
+    button{
         padding:0.56rem 2.5rem;
     }
 }
