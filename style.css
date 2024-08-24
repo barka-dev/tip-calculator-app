@@ -207,16 +207,8 @@ input[type='radio']{
 
 @media screen and (min-width:60rem){
     header{
-        padding-block-start:0;
+        padding-block-start:10.18rem;
         padding-block-end:5.49rem;
-    }
-
-    main{
-        height:100vh;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
     }
     
     article{
@@ -224,6 +216,7 @@ input[type='radio']{
         flex-direction:row;
         gap:3rem;
         width:57.5rem;
+        margin:0 auto;
     }
     .section_1, .section_2{
         flex:1;
