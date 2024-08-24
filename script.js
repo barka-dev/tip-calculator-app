@@ -1,7 +1,6 @@
 const tips = document.querySelectorAll(".tip");
 const customTip = document.querySelector(".customTip");
 const submitBtn = document.querySelector("#submitBtn");
-const form = document.querySelector("#form");
 const radios = document.querySelectorAll("input[type='radio']");
 const tipAmount = document.querySelector('#tipAmount');
 const total = document.querySelector('#total');
@@ -74,11 +73,15 @@ inputs.forEach((input) => {
 
 // Handle Data
 const calculateTipAmount = (bill, tip, nbPeople)=>{
-    return (bill*(tip/100))/nbPeople;
+    const formula = (bill*(tip/100))/nbPeople;
+    const result = Math.trunc(formula*100)/100;
+    return {'formula':formula,'result':result};
 }
 
 const calculateTotal = (bill, nbPeople, tipAmount)=>{
-    return bill/nbPeople+tipAmount;
+    const formula = bill/nbPeople+tipAmount;
+    const result = parseFloat(formula.toFixed(2));
+    return result;
 }
 
 const handleFormData = ()=>{
@@ -86,18 +89,22 @@ const handleFormData = ()=>{
     const data = Object.fromEntries(formData);
     const billValue = parseFloat(data.bill);
     const nbPeopleValue = parseInt(data.nbPeople);
-    let finalTip = 0;
-    if(data.customTip !== ''){
-        finalTip = parseFloat(data.customTip);
+    const tipValue = parseFloat(data.tip);
+    const customTipValue = parseFloat(data.customTip);
+    if (billValue>=0 && (tipValue>=0 || customTipValue>=0) && nbPeopleValue>0){
+        let finalTip = 0;
+        if(customTipValue>=0){
+            finalTip = customTipValue;
+        }else{
+            finalTip = tipValue;
+        }
+        const tipAmountResult = calculateTipAmount(billValue, finalTip, nbPeopleValue);
+        const totalResult = calculateTotal(billValue, nbPeopleValue, tipAmountResult.formula);
+        tipAmount.textContent = `$${tipAmountResult.result}`;
+        total.textContent = `$${totalResult}`;
     }else{
-        finalTip = parseFloat(data.tip);
-    }
-
-    const tipAmountResult = calculateTipAmount(billValue, finalTip, nbPeopleValue);
-    const totalResult = calculateTotal(billValue, nbPeopleValue, tipAmountResult);
-    tipAmount.textContent = `$${parseFloat(tipAmountResult.toFixed(2))}`;
-    total.textContent = `$${parseFloat(totalResult.toFixed(2))}`;
-  
+        alert("Invalid data provided");
+    } 
 }
 
 submitBtn.addEventListener('click',()=>{
