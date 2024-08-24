@@ -19,7 +19,7 @@ const removeSelection = (items)=>{
 
 const removeSelectionStyle = (items)=>{
     items.forEach((item)=>{
-        item.classList.remove('btnSelected');
+        item.classList.remove('tipSelected');
         
     })
 }
@@ -28,7 +28,7 @@ const handleStyleOnClick = (item, func, items)=>{
     item.addEventListener('click', ()=>{
         customTip.value = '';
         func(items);
-        item.classList.add('btnSelected');
+        item.classList.add('tipSelected');
     })
 }
 
